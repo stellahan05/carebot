@@ -8,7 +8,7 @@ const app = express();
 
 // middleware
 app.use(cors({
-    origin: "https://carebot-health.vercel.app/",
+    origin: "https://carebot-health.vercel.app",
 }));
 app.use(express.json());
 
