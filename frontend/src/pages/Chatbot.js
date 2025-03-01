@@ -13,7 +13,7 @@ const Chatbot = () => {
       setChatHistory(prevChat => [...prevChat, userMessage]);
 
       try {
-        const res = await axios.post("https://carebot-47jk.onrender.com", { symptoms });
+        const res = await axios.post("https://carebot-47jk.onrender.com/api/chatbot", { symptoms });
         const botMessage = { sender: "bot", message: res.data.reply };
 
         setChatHistory(prevChat => [...prevChat, botMessage]);

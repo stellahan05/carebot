@@ -7,7 +7,9 @@ dotenv.config();
 const app = express();
 
 // middleware
-app.use(cors());
+app.use(cors({
+    origin: "https://carebot-health.vercel.app/",
+}));
 app.use(express.json());
 
 // routes
