@@ -1,7 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "../firebase";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,28 +13,42 @@ const Login = () => {
     try {
       if (isRegister) {
         await createUserWithEmailAndPassword(auth, email, password);
-        alert("Account created! You are now logged in.");
+        toast.success("Account created! You are now logged in.");
       } else {
         await signInWithEmailAndPassword(auth, email, password);
-        alert("Logged in successfully!");
+        toast.success("Logged in successfully!");
       }
       navigate("/chatbot");
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 
   const handleLogout = async () => {
-    await signOut(auth);
-    alert("Logged out successfully!");
-    navigate("/login");
+    try {
+      await signOut(auth);
+      toast.info("Logged out successfully!");
+      navigate("/login");
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>{isRegister ? "Sign Up" : "Login"}</h2>
-      <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+      <input 
+        type="email" 
+        placeholder="Email" 
+        value={email} 
+        onChange={(e) => setEmail(e.target.value)} 
+      />
+      <input 
+        type="password" 
+        placeholder="Password" 
+        value={password}
+        onChange={(e) => setPassword(e.target.value)} 
+        />
       <button onClick={handleSignIn}>{isRegister ? "Sign Up" : "Sign In"}</button>
       <button onClick={() => setIsRegister(!isRegister)}>
         {isRegister ? "Already have an account? Login" : "Need an account? Sign Up"}

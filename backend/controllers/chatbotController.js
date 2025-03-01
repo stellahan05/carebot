@@ -14,12 +14,13 @@ export const chatWithBot = async (req, res) => {
     console.log(symptoms); 
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: "gpt-4o-mini",
       messages: [
-        { role: "system", content: "You are a helpful medical chatbot designed to streamline the hospital check-in process, providing possible recommendations based on symptoms." },
+        { role: "system", content: "You are a helpful medical chatbot designed to streamline the hospital check-in process, providing possible recommendations based on symptoms, clearly and within 100 tokens." },
         { role: "user", content: `Me, a patient describes their symptoms as: ${symptoms}. Provide a clear possible medical recommendation, such as what steps to take, whether it is necessary to be admitted to the hospital.` }
       ],
       max_tokens: 100,
+      temperature: 0.3,
     });
 
     console.log('Response from OpenAI:', response.choices[0].message.content);
