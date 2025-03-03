@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { auth, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "../firebase";
 import { toast } from "react-toastify";
 
@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isRegister, setIsRegister] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleSignIn = async () => {
     try {
@@ -18,7 +18,7 @@ const Login = () => {
         await signInWithEmailAndPassword(auth, email, password);
         toast.success("Logged in successfully!");
       }
-      navigate("/chatbot");
+      router.push("/chatbot");
     } catch (error) {
       toast.error(error.message);
     }
@@ -28,7 +28,7 @@ const Login = () => {
     try {
       await signOut(auth);
       toast.info("Logged out successfully!");
-      navigate("/login");
+      router.push("/login");
     } catch (error) {
       toast.error(error.message);
     }
