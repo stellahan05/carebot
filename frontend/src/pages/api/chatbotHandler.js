@@ -6,19 +6,22 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { symptoms } = req.body;
+        const { chatHistory } = req.body;
 
-        if (!symptoms) {
-            return res.status(400).json({ error: "Symptoms are required" });
+        if (!chatHistory || chatHistory.length === 0) {
+            return res.status(400).json({ error: "Chat history is required" });
         }
 
         const response = await openai.chat.completions.create({
             model: "gpt-4o-mini",
             messages: [
-                { role: "system", content: "You are a helpful medical chatbot designed to streamline the hospital check-in process, providing possible recommendations based on symptoms, clearly and within 100 tokens." },
-                { role: "user", content: `Me, a patient describes their symptoms as: ${symptoms}. Provide a clear possible medical recommendation, such as what steps to take, whether it is necessary to be admitted to the hospital.` }
+                { role: "system", content: "You are a helpful medical chatbot designed to assist Canadian users in evaluating their symptoms and providing home-based solutions. Provide clear, concise and emphathetic guidance on self-care options for mild symptoms within 300 characters. If the symptoms suggest a need for emergency care, advise seeking immediate medical attention." },
+                ...chatHistory.map(msg => ({
+                    role: msg.sender === "user" ? "user" : "assistant",
+                    content: msg.message
+                }))
             ],
-            max_tokens: 100,
+            max_tokens: 300,
             temperature: 0.3,
         });
 

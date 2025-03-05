@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { auth, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "../firebase";
 import { toast } from "react-toastify";
+import Image from 'next/image';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +37,8 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2>{isRegister ? "Sign Up" : "Login"}</h2>
+      <Image src="/logo.png" alt="Carebot Logo" width={100} height={100} />
+      <h2>{isRegister ? "Create an account" : "Welcome Back"}</h2>
       <input 
         type="email" 
         placeholder="Email" 

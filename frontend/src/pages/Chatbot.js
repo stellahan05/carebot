@@ -9,11 +9,14 @@ const Chatbot = () => {
   const handleChat = async () => {
     if (symptoms.trim()) {
       // Add user message to chat history
-      const userMessage = { sender: "user", message: symptoms };
-      setChatHistory(prevChat => [...prevChat, userMessage]);
+      const newUserMessage = { sender: "user", message: symptoms };
+      const updatedChatHistory = [...chatHistory, newUserMessage];
+
+      setChatHistory(updatedChatHistory);
+      setSymptoms(""); // Clear input field
 
       try {
-        const res = await axios.post("/api/chatbotHandler", { symptoms });
+        const res = await axios.post("/api/chatbotHandler", { chatHistory: updatedChatHistory });
         const botMessage = { sender: "bot", message: res.data.reply };
 
         setChatHistory(prevChat => [...prevChat, botMessage]);
@@ -21,9 +24,6 @@ const Chatbot = () => {
         console.error(error); // Log the error
         toast.error("An error occurred. Please try again.");
       }
-
-      // Clear the symptoms input after submission
-      setSymptoms("");
     }
   };
 
