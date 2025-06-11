@@ -5,12 +5,14 @@ import { toast } from "react-toastify";
 const Chatbot = () => {
   const [symptoms, setSymptoms] = useState("");
   const [chatHistory, setChatHistory] = useState([]);  // Store chat history
+  const [showInitialMessage, setShowInitialMessage] = useState(true);
 
   const handleChat = async () => {
     if (symptoms.trim()) {
       // Add user message to chat history
       const newUserMessage = { sender: "user", message: symptoms };
       const updatedChatHistory = [...chatHistory, newUserMessage];
+      setShowInitialMessage(false);
 
       setChatHistory(updatedChatHistory);
       setSymptoms(""); // Clear input field
@@ -29,6 +31,7 @@ const Chatbot = () => {
 
   return (
     <div className="chatbot-container">
+      {showInitialMessage && <h1>How can I help you?</h1>}
       <div className="chat-messages">
         {chatHistory.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>

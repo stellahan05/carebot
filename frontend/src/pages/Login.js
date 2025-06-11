@@ -37,7 +37,8 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <Image src="/logo.png" alt="Carebot Logo" width={100} height={100} />
+      {/* <Image src="/logo.png" alt="Carebot Logo" width={100} height={100} />  */}
+      {/* <h1>Carebot</h1> */}
       <h2>{isRegister ? "Create an account" : "Welcome Back"}</h2>
       <input 
         type="email" 
