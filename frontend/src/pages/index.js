@@ -2,15 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const HomePage = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const checkUser = async () => {
-        const user = auth.currentUser;
-
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
         if (user) {
             router.push('/chatbot');  // Redirect to chatbot if user is logged in
         } else {
@@ -18,10 +17,10 @@ const HomePage = () => {
         }
 
         setLoading(false);
-    };
+    });
 
-    checkUser();
-    }, [router]);
+    return () => unsubscribe(); // Cleanup subscription on unmount
+  }, [router]);
 
   if (loading) {
     return (

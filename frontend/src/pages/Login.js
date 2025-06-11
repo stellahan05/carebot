@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { auth, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "../firebase";
 import { toast } from "react-toastify";
-import Image from 'next/image';
 
 const Login = () => {
   const [email, setEmail] = useState("");
