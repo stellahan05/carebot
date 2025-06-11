@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+# Carebot - AI-powered Health Assistant
+Carebot is a full-stack web application designed to solve the problem of nurse shortages and the slow pace of healthcare in Canada. By automating health check-ins and providing an efficient and cost-effective way for users to stay in check with their health, Carebot helps bridge the gap in the healthcare system.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Key Features:
+- AI-powered Health Check-ins: Using the OpenAI API, Carebot leverages AI to collect and assess users' health status through conversational check-ins.
+- User Authentication: Users can securely log in and manage their health data using Firebase Authentication.
+- Real-time Data Storage: Health data and responses are stored in Firestore for easy access and management.
+- Interactive Frontend: Built with Next.js, providing a responsive, modern, and fast user interface.
+- Backend Communication: Axios is used to handle communication between the frontend and the backend, ensuring seamless interaction with the AI model and storage.
 
-## Available Scripts
+## Tech Stack:
+- Frontend: Next.js, React
+- Backend: Node.js, OpenAI API, Firebase Authentication, Firestore
+- API Communication: Axios
+- Deployment: Vercel for hosting
 
-In the project directory, you can run:
+## How It Works:
+- Health Check-in Workflow: Users answer a series of health-related questions powered by the OpenAI API. Based on their responses, the AI provides feedback and advice, helping them monitor their health in a timely manner.
+- Data Management: Responses are saved securely to Firestore, allowing users to access past health check-ins and monitor their progress over time.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Future Enhancements:
+- Integration with additional health data sources (e.g., wearables).
+- Advanced AI-driven recommendations for personalized health advice.
+- Expansion of the app to cover broader health concerns and more personalized check-in workflows.
